@@ -28,6 +28,22 @@ var controller =
             str = `${str}...`;
         }
         return str;
+    },
+    
+    relevatClassEl: function (el,targetClassName,depth = 100){
+        let correntParrent,currentClassName, tagNameEl,counter = 0;
+        l1: do{
+            counter ++;
+            if(correntParrent){correntParrent = $(correntParrent).parent();}else{correntParrent = $(el).parent();}
+            currentClassName = correntParrent.hasClass(targetClassName);
+
+            tagNameEl =  $(correntParrent).prop("tagName").toLowerCase();
+            if(tagNameEl == 'body')break l1;
+            if(depth == counter || depth == false)break l1;
+            if(currentClassName)break l1;
+
+        }while(true);
+        return correntParrent;
     }
 }
 
