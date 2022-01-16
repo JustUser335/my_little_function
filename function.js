@@ -8,7 +8,8 @@ var controller =
     {
         this.slideAnchorLinks();
         this.trimString();      
-
+        this.relevatClassEl();
+        this.copyText();
     },
     slideAnchorLinks: function()
     {
@@ -44,6 +45,16 @@ var controller =
 
         }while(true);
         return correntParrent;
+    },
+    
+    copyText: function (strToIns){
+        var area = document.createElement("textarea");
+        area.innerHTML = strToIns; //strToIns will be copied
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+        return 0;
     }
 }
 
